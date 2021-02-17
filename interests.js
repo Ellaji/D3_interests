@@ -1,8 +1,8 @@
 const interestBubbles = () => {
 
     var sets = [
-                {sets:["Frontend"], figure: 40, label: "Frontend", size: 40},
-                {sets:["Datavisualization"], figure: 12, label: "Datavisualization", size: 12},
+                {sets:["Frontend"], figure: 60, label: "Frontend", size: 60},
+                {sets:["Datavisualization"], figure: 10, label: "Datavisualization", size: 10},
                 {sets:["Design"], figure: 5, label: "Design", size: 5},
 
                 {sets: ["Frontend", "Datavisualization"], figure: 0, label: "Frontend and Datavisualization", size: 0},
@@ -15,8 +15,6 @@ const interestBubbles = () => {
     var chart = venn.VennDiagram()
         .width(500)
         .height(400)
-
-    
 
     var div = d3.select("#venn_one").datum(sets).call(chart);
         div.selectAll("text").style("fill", "white");
@@ -70,10 +68,10 @@ const interestBubbles = () => {
 
 
     var sets = [
-                {sets:["Frontend"], figure: 27.92, label: "Frontend", size: 27.92},
-                {sets:["Datavisualization"], figure: 55.28, label: "Datavisualization", size: 55.28},
-                {sets:["Design"], figure: 7.62, label: "Design", size: 7.62},
-                {sets: ["Frontend", "Datavisualization"], figure: 3.03, label: "Frontend and Datavisualization", size: 3.03},
+                {sets:["Frontend"], figure: 20, label: "Frontend", size: 20},
+                {sets:["Datavisualization"], figure: 50, label: "Datavisualization", size: 50},
+                {sets:["Design"], figure: 5, label: "Design", size: 5},
+                {sets: ["Frontend", "Datavisualization"], figure: 15, label: "Frontend and Datavisualization", size: 15},
                 {sets: ["Frontend", "Design"], figure: 1.66, label: "Frontend and Design", size: 1.66},
                 {sets: ["Datavisualization", "Design"], figure: 2.40, label: "Datavisualization and Design", size: 2.40},
                 {sets: ["Frontend", "Datavisualization", "Design"], figure: 1.08, label: "Frontend, Datavisualization, and Design", size: 1.08} 
@@ -131,8 +129,22 @@ const interestBubbles = () => {
                 .style("stroke-opacity", 1);
         });
 
+    changeFontSizeBasedOnBubbleSize();
+
+}
+
+const changeFontSizeBasedOnBubbleSize = () => {
+    var circles = document.getElementsByClassName("venn-circle");
+
+    console.log(circles);
+    console.log(circles[3].getBoundingClientRect().width);
+    
+    for (var i = 0; i < circles; i++) { 
+        console.log("test");
+    }
 }
 
 interestBubbles();
+
 
 //https://github.com/benfred/venn.js/issues/22
