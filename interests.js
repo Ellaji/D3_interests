@@ -1,15 +1,14 @@
-
-
 const interestBubbles = () => {
 
     var sets = [
-                {sets:["Audio"], figure: 8.91, label: "Audio", size: 8.91},
-                {sets:["Direct Buy"], figure: 34.53, label: "Direct Buy", size: 34.53},
-                {sets:["Branded Takeover"], figure: 40.9, label: "Branded Takeover", size: 40.9},
-                {sets: ["Audio", "Direct Buy"], figure: 5.05, label: "Audio and Direct Buy", size: 5.05},
-                {sets: ["Audio", "Branded Takeover"], figure: 3.65, label: "Audio and Branded Takeover", size: 3.65},
-                {sets: ["Direct Buy", "Branded Takeover"], figure: 4.08, label: "Direct Buy and Branded Takeover", size: 4.08},
-                {sets: ["Audio", "Direct Buy", "Branded Takeover"], figure: 2.8, label: "Audio, Direct Buy, and Branded Takeover", size: 2.8}
+                {sets:["Frontend"], figure: 40, label: "Frontend", size: 40},
+                {sets:["Datavisualization"], figure: 12, label: "Datavisualization", size: 12},
+                {sets:["Design"], figure: 5, label: "Design", size: 5},
+
+                {sets: ["Frontend", "Datavisualization"], figure: 0, label: "Frontend and Datavisualization", size: 0},
+                {sets: ["Frontend", "Design"], figure: 1, label: "Frontend and Design", size: 1},
+                {sets: ["Datavisualization", "Design"], figure: 2, label: "Datavisualization and Design", size: 2},
+                {sets: ["Frontend", "Datavisualization", "Design"], figure: 0, label: "Frontend, Datavisualization, and Design", size: 0}
                 ];
 
 
@@ -22,7 +21,7 @@ const interestBubbles = () => {
     var div = d3.select("#venn_one").datum(sets).call(chart);
         div.selectAll("text").style("fill", "white");
         div.selectAll(".venn-circle path")
-                .style("fill-opacity", .8)
+                .style("fill-opacity", .6)
                 .style("stroke-width", 1)
                 .style("stroke-opacity", 1)
                 .style("stroke", "fff");
@@ -47,7 +46,7 @@ const interestBubbles = () => {
             var selection = d3.select(this).transition("tooltip").duration(400);
             selection.select("path")
                 .style("stroke-width", 3)
-                .style("fill-opacity", d.sets.length == 1 ? .8 : 0)
+                .style("fill-opacity", d.sets.length == 1 ? .6 : 0)
                 .style("stroke-opacity", 1);
         })
 
@@ -61,7 +60,7 @@ const interestBubbles = () => {
             var selection = d3.select(this).transition("tooltip").duration(400);
             selection.select("path")
                 .style("stroke-width", 3)
-                .style("fill-opacity", d.sets.length == 1 ? .8 : 0)
+                .style("fill-opacity", d.sets.length == 1 ? .6 : 0)
                 .style("stroke-opacity", 1);
         });
 
@@ -71,13 +70,13 @@ const interestBubbles = () => {
 
 
     var sets = [
-                {sets:["Audio"], figure: 27.92, label: "Audio", size: 27.92},
-                {sets:["Direct Buy"], figure: 55.28, label: "Direct Buy", size: 55.28},
-                {sets:["Branded Takeover"], figure: 7.62, label: "Branded Takeover", size: 7.62},
-                {sets: ["Audio", "Direct Buy"], figure: 3.03, label: "Audio and Direct Buy", size: 3.03},
-                {sets: ["Audio", "Branded Takeover"], figure: 1.66, label: "Audio and Branded Takeover", size: 1.66},
-                {sets: ["Direct Buy", "Branded Takeover"], figure: 2.40, label: "Direct Buy and Branded Takeover", size: 2.40},
-                {sets: ["Audio", "Direct Buy", "Branded Takeover"], figure: 1.08, label: "Audio, Direct Buy, and Branded Takeover", size: 1.08} 
+                {sets:["Frontend"], figure: 27.92, label: "Frontend", size: 27.92},
+                {sets:["Datavisualization"], figure: 55.28, label: "Datavisualization", size: 55.28},
+                {sets:["Design"], figure: 7.62, label: "Design", size: 7.62},
+                {sets: ["Frontend", "Datavisualization"], figure: 3.03, label: "Frontend and Datavisualization", size: 3.03},
+                {sets: ["Frontend", "Design"], figure: 1.66, label: "Frontend and Design", size: 1.66},
+                {sets: ["Datavisualization", "Design"], figure: 2.40, label: "Datavisualization and Design", size: 2.40},
+                {sets: ["Frontend", "Datavisualization", "Design"], figure: 1.08, label: "Frontend, Datavisualization, and Design", size: 1.08} 
                 ];
 
 
@@ -91,7 +90,7 @@ const interestBubbles = () => {
     var div2 = d3.select("#venn_two").datum(sets).call(chart);
         div2.selectAll("text").style("fill", "white");
         div2.selectAll(".venn-circle path")
-                .style("fill-opacity", .8)
+                .style("fill-opacity", .6)
                 .style("stroke-width", 1)
                 .style("stroke-opacity", 1)
                 .style("stroke", "fff");
@@ -100,9 +99,6 @@ const interestBubbles = () => {
 
     var tooltip = d3.select("body").append("div")
         .attr("class", "venntooltip");
-
-
-
 
     div2.selectAll("g")
         .on("mouseover", function(d, i) {
@@ -117,7 +113,7 @@ const interestBubbles = () => {
             var selection = d3.select(this).transition("tooltip").duration(400);
             selection.select("path")
                 .style("stroke-width", 3)
-                .style("fill-opacity", d.sets.length == 1 ? .8 : 0)
+                .style("fill-opacity", d.sets.length == 1 ? .6 : 0)
                 .style("stroke-opacity", 1);
         })
 
@@ -131,7 +127,7 @@ const interestBubbles = () => {
             var selection = d3.select(this).transition("tooltip").duration(400);
             selection.select("path")
                 .style("stroke-width", 3)
-                .style("fill-opacity", d.sets.length == 1 ? .8 : 0)
+                .style("fill-opacity", d.sets.length == 1 ? .6 : 0)
                 .style("stroke-opacity", 1);
         });
 
