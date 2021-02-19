@@ -1,8 +1,8 @@
 const interestBubbles = () => {
 
-    var sets = [
-                {sets:["Frontend"], figure: 60, label: "Frontend", size: 60},
-                {sets:["Datavisualization"], figure: 10, label: "Datavisualization", size: 10},
+    var setCurrent = [
+                {sets:["Frontend"], figure: 55, label: "Frontend", size: 55},
+                {sets:["Datavisualization"], figure: 15, label: "Datavisualization", size: 15},
                 {sets:["Design"], figure: 5, label: "Design", size: 5},
 
                 {sets: ["Frontend", "Datavisualization"], figure: 0, label: "Frontend and Datavisualization", size: 0},
@@ -12,11 +12,11 @@ const interestBubbles = () => {
                 ];
 
 
-    var chart = venn.VennDiagram()
-        .width(500)
+    var chartCurrent = venn.VennDiagram()
+        //.width(500)
         .height(400)
 
-    var div = d3.select("#venn_one").datum(sets).call(chart);
+    var div = d3.select("#venn_one").datum(setCurrent).call(chartCurrent);
         div.selectAll("text").style("fill", "white");
         div.selectAll(".venn-circle path")
                 .style("fill-opacity", .6)
@@ -37,9 +37,8 @@ const interestBubbles = () => {
 
             // Display a tooltip with the current size
             tooltip.transition().duration(40).style("opacity", 1);
-            tooltip.text(d.size + "% of Audience One saw " + d.label);
+            tooltip.text(d.size + "% of the time spend for work " + d.label);
 
-            // highlight the current path
             // highlight the current path
             var selection = d3.select(this).transition("tooltip").duration(400);
             selection.select("path")
@@ -63,14 +62,11 @@ const interestBubbles = () => {
         });
 
 
-
-
-
-
-    var sets = [
+    var setDesired = [
                 {sets:["Frontend"], figure: 20, label: "Frontend", size: 20},
                 {sets:["Datavisualization"], figure: 50, label: "Datavisualization", size: 50},
                 {sets:["Design"], figure: 5, label: "Design", size: 5},
+
                 {sets: ["Frontend", "Datavisualization"], figure: 15, label: "Frontend and Datavisualization", size: 15},
                 {sets: ["Frontend", "Design"], figure: 1.66, label: "Frontend and Design", size: 1.66},
                 {sets: ["Datavisualization", "Design"], figure: 2.40, label: "Datavisualization and Design", size: 2.40},
@@ -79,13 +75,12 @@ const interestBubbles = () => {
 
 
 
-    var chart = venn.VennDiagram()
-        .width(500)
+    var chartDesired = venn.VennDiagram()
+        //.width(500)
         .height(400)
-
     
 
-    var div2 = d3.select("#venn_two").datum(sets).call(chart);
+    var div2 = d3.select("#venn_two").datum(setDesired).call(chartDesired);
         div2.selectAll("text").style("fill", "white");
         div2.selectAll(".venn-circle path")
                 .style("fill-opacity", .6)
@@ -105,7 +100,7 @@ const interestBubbles = () => {
 
             // Display a tooltip with the current size
             tooltip.transition().duration(40).style("opacity", 1);
-            tooltip.text(d.size + "% of Audience Two saw " + d.label);
+            tooltip.text(d.size + "% of the time spend for work " + d.label);
 
             // highlight the current path
             var selection = d3.select(this).transition("tooltip").duration(400);
@@ -135,12 +130,13 @@ const interestBubbles = () => {
 
 const changeFontSizeBasedOnBubbleSize = () => {
     var circles = document.getElementsByClassName("venn-circle");
-
-    console.log(circles);
-    console.log(circles[3].getBoundingClientRect().width);
     
-    for (var i = 0; i < circles; i++) { 
-        console.log("test");
+    for (var i = 0; i < circles.length; i++) { 
+        var bubbleSize = circles[i].getElementsByTagName('path')[0].getAttribute('d');
+        console.log(bubbleSize);
+        if (bubbleSize > 52) {
+            circles[i].childNodes[1].style.fontSize = "20px"; 
+        }
     }
 }
 
